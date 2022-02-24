@@ -32,8 +32,8 @@ void output(int n,int prime)
 int main()
 {
   int n,prime;
-  input_number();
-  is_prime(n);
+  n=input_number();
+  prime=is_prime(n);
   output(n,prime);
   return 0;  
 }
