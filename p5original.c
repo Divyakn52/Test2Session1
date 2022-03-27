@@ -1,42 +1,49 @@
 #include<stdio.h>
-#include<math.h>
- int input_array_size()
+
+int input_array_size()
 {
   int n;
-  printf("Enter the size of array:");
+  printf("enter the number\n");
   scanf("%d",&n);
+  return n;
 }
-void input_array(int n,int a[n])
+void init_array(int n,int a[n])
 {
-  for(int i=0;i<n;i++)
+  int i;
+  for(i=0;i<n;i++)
     {
-      a[i]=i;
-      a[1]=0;
+      a[i]=i+1;
     }
 }
-void ets(int n,int a[n])
+void ero(int n,int a[n])
 {
- int i=0;
-  while(i<sqrt(n))
+  int i,j;
+  for(i=1;i<n;i++)
     {
-     while(a[i]==0)i++;
-      for(int k=i+i;i<n;k+=i)
-        a[k]=0;
-      i++;
+      if (a[i]==0)
+        continue;
+      for(j=a[i]+1;j<=n;j++)
+        {
+          if(j%a[i]==0)
+            a[j-1]=0;
+        }
     }
 }
-void display(int n,int a[n])
+void output(int n,int a[n])
 {
-  for(int i=0;i<n;i++)
-    {
-      if(a[i]!=0)
-        printf("%d",a[i]);
-      printf("\n");
-    }
+  int i;
+  printf("prime numbers are:\n");
+    for(i=0;i<n;i++)
+    printf("%d ",a[i]);
 }
 int main()
 {
-  int i,n;
+  int n;
   n=input_array_size();
+  int a[n];
+  init_array(n,a);
+  ero(n,a);
+  output(n,a);
+  return 0;
   
 }
